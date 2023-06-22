@@ -1,0 +1,16 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kserve-model-chart
+  namespace: default
+spec:
+  releaseName: kserve-model
+  chart:
+    repository: https://github.com/Sangauppe/ml_project_helm.git
+    name: kserve-model-chart
+    version: 0.1.0
+  values:
+    model:
+      name: my-model
+      image: gs://kfserving-examples/models/sklearn/1.0/model
+      replicas: 1
